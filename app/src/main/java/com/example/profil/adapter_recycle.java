@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,6 +44,7 @@ public class adapter_recycle extends RecyclerView.Adapter<adapter_recycle.MyView
         holder.ed.setId(position);
         holder.del.setId(position);
         String idann=an.getIDannonce();
+        Picasso.get().load(an.getImage()).error(R.drawable.images).into(holder.image);
         holder.ed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,10 +68,12 @@ public class adapter_recycle extends RecyclerView.Adapter<adapter_recycle.MyView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         //add categorie description and others
         TextView date_Ajout,nom_produit; Button ed,del;
+        ImageView image;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             date_Ajout=itemView.findViewById(R.id.date);
             nom_produit=itemView.findViewById(R.id.nom_produit);
+            image=itemView.findViewById(R.id.image);
             ed=itemView.findViewById(R.id.ed1);
             del=itemView.findViewById(R.id.del1);
             //ed.setId(View.generateViewId());

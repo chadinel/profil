@@ -68,11 +68,12 @@ public class Empty_Fragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.child("Produits").getChildren()) {
                      String getNom_produit = snapshot.child(userId).child("nom_produit").getValue(String.class);
                      String getDate_Ajout = snapshot.child(userId).child("date_Ajout").getValue(String.class);
+                    String getImage = snapshot.child(userId).child("image").getValue(String.class);
                     String IDannonce = snapshot.getKey();
-                    annonces an = new annonces(getDate_Ajout,getNom_produit,IDannonce);
+                    annonces an = new annonces(getDate_Ajout,getNom_produit,IDannonce,getImage);
                     liste1.add(an);
                     //annonces an = snapshot.getValue(annonces.class);
-                    //liste1.add(an);
+
                 }
                 recyclerView.setAdapter(new adapter_recycle(getContext(),liste1));
             }

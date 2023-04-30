@@ -3,10 +3,11 @@ package com.example.profil;
 public class annonces {
     String categorie,description,date_Ajout,nom_produit,userId,image,IDannonce;
 
-    public annonces( String date_Ajout, String nom_produit,String IDannonce) {
+    public annonces( String date_Ajout, String nom_produit,String IDannonce,String image) {
         this.date_Ajout = date_Ajout;
         this.nom_produit = nom_produit;
         this.IDannonce = IDannonce;
+        this.image = image;
 
     }
 
