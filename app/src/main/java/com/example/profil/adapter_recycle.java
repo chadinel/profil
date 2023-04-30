@@ -20,7 +20,7 @@ public class adapter_recycle extends RecyclerView.Adapter<adapter_recycle.MyView
 
     ArrayList<annonces> list1;
     Context context;
-    String idann;
+
 
     public adapter_recycle( Context context, ArrayList<annonces> list1) {
         this.context=context;
@@ -39,7 +39,9 @@ public class adapter_recycle extends RecyclerView.Adapter<adapter_recycle.MyView
         annonces an=list1.get(position);
         holder.nom_produit.setText(an.getNom_produit());
         holder.date_Ajout.setText(an.getDate_Ajout());
-        idann=an.getIDannonce();
+        holder.ed.setId(position);
+        holder.del.setId(position);
+        String idann=an.getIDannonce();
         holder.ed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
