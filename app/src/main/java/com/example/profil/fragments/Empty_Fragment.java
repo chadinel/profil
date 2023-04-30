@@ -57,17 +57,21 @@ public class Empty_Fragment extends Fragment {
         liste1= new ArrayList<>();
         recyclerView.setAdapter(new adapter_recycle(getContext(),liste1));
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("Produits");
+        databaseReference = database.getReference();
         // Query the database for the products
-       databaseReference.addValueEventListener(new ValueEventListener() {
+     databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange( DataSnapshot dataSnapshot) {
                 liste1.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    annonces an = snapshot.getValue(annonces.class);
+                for (DataSnapshot snapshot : dataSnapshot.child("Produits").getChildren()) {
+                     String getNom_produit = snapshot.child("nom_produit").getValue(String.class);
+                     String getDate_Ajout = snapshot.child("date_Ajout").getValue(String.class);
+                    annonces an = new annonces(getDate_Ajout,getNom_produit);
                     liste1.add(an);
+                    //annonces an = snapshot.getValue(annonces.class);
+                    //liste1.add(an);
                 }
-                recyclerView.getAdapter().notifyDataSetChanged();
+                recyclerView.setAdapter(new adapter_recycle(getContext(),liste1));
             }
 
             @Override
