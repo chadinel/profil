@@ -80,6 +80,7 @@ public class Empty_Fragment extends Fragment {
 
             @Override
             public void onCancelled( DatabaseError databaseError) {
+
                 Log.e("MyFragment", "Error getting data", databaseError.toException());
             }
         });
