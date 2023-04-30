@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="verttroc">#41c1ba</color>
+    <color name="ecrituretroc">#1d4355</color>
+    <color name="bluetroc">#289dd2</color>
 </resources>

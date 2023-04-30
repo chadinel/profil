@@ -1,11 +1,12 @@
 package com.example.profil;
 
 public class annonces {
-    String categorie,description,date_Ajout,nom_produit,userId,image;
+    String categorie,description,date_Ajout,nom_produit,userId,image,IDannonce;
 
-    public annonces( String date_Ajout, String nom_produit) {
+    public annonces( String date_Ajout, String nom_produit,String IDannonce) {
         this.date_Ajout = date_Ajout;
         this.nom_produit = nom_produit;
+        this.IDannonce = IDannonce;
 
     }
 
@@ -15,6 +16,9 @@ public class annonces {
 
     public String getDescription() {
         return description;
+    }
+    public String getIDannonce() {
+        return IDannonce;
     }
 
     public String getDate_Ajout() {

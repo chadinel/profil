@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import com.example.profil.R;
 import com.example.profil.adapter_recycle;
 import com.example.profil.annonces;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,10 +64,12 @@ public class Empty_Fragment extends Fragment {
             @Override
             public void onDataChange( DataSnapshot dataSnapshot) {
                 liste1.clear();
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 for (DataSnapshot snapshot : dataSnapshot.child("Produits").getChildren()) {
-                     String getNom_produit = snapshot.child("nom_produit").getValue(String.class);
-                     String getDate_Ajout = snapshot.child("date_Ajout").getValue(String.class);
-                    annonces an = new annonces(getDate_Ajout,getNom_produit);
+                     String getNom_produit = snapshot.child(userId).child("nom_produit").getValue(String.class);
+                     String getDate_Ajout = snapshot.child(userId).child("date_Ajout").getValue(String.class);
+                    String IDannonce = snapshot.getKey();
+                    annonces an = new annonces(getDate_Ajout,getNom_produit,IDannonce);
                     liste1.add(an);
                     //annonces an = snapshot.getValue(annonces.class);
                     //liste1.add(an);
