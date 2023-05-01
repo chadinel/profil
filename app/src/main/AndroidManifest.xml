@@ -23,6 +23,7 @@
         <activity android:name=".SignUpActivity"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".AjoutProduit"/>
+        <activity android:name=".adapter_recycle"/>
 
     </application>
 

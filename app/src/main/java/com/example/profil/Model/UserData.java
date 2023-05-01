@@ -1,5 +1,9 @@
 package com.example.profil.Model;
 
+import android.content.Intent;
+
+import com.example.profil.AjoutProduit;
+
 public class UserData {
     public String nomComplet,phone,address,pays,ville,description;
 
@@ -12,3 +16,4 @@ public class UserData {
         this.description= description;
     }
 }
+

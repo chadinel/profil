@@ -1,6 +1,9 @@
 package com.example.profil;
+import android.app.Activity;
+import android.content.Intent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +52,11 @@ public class adapter_recycle extends RecyclerView.Adapter<adapter_recycle.MyView
         holder.ed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+                Intent intent = new Intent(context, AjoutProduit.class);
+                intent.putExtra("id_annonce", idann);
+                context.startActivity(intent);
+               // ((Activity) context).finish();
             }
         });
         holder.del.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +65,7 @@ public class adapter_recycle extends RecyclerView.Adapter<adapter_recycle.MyView
                 String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Produits").child(userId).child(idann);
                 ref.removeValue();
+                Toast.makeText(context,"Element deleted",Toast.LENGTH_SHORT ).show();
             }
         });
     }
