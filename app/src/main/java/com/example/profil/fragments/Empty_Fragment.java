@@ -66,12 +66,16 @@ public class Empty_Fragment extends Fragment {
                 liste1.clear();
                 String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 for (DataSnapshot snapshot : dataSnapshot.child("Produits").getChildren()) {
-                     String getNom_produit = snapshot.child(userId).child("nom_produit").getValue(String.class);
-                     String getDate_Ajout = snapshot.child(userId).child("date_Ajout").getValue(String.class);
-                    String getImage = snapshot.child(userId).child("image").getValue(String.class);
-                    String IDannonce = snapshot.getKey();
-                    annonces an = new annonces(getDate_Ajout,getNom_produit,IDannonce,getImage);
-                    liste1.add(an);
+                    if(snapshot.getKey().equals(userId)){
+                        for(DataSnapshot elmnts: snapshot.getChildren()){
+                        String getNom_produit = elmnts.child("nom_produit").getValue(String.class);
+                        String getDate_Ajout = elmnts.child("date_Ajout").getValue(String.class);
+                        String getImage = elmnts.child("image").getValue(String.class);
+                        String IDannonce = elmnts.getKey();
+                        annonces an = new annonces(getDate_Ajout,getNom_produit,IDannonce,getImage);
+                        liste1.add(an);}
+                    }
+
                     //annonces an = snapshot.getValue(annonces.class);
 
                 }

@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange( DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.child("Registered Users").getChildren()) {
-                    //String nomComplet = snapshot.child(userId).child("nomComplet").getValue(String.class);
-                   // nom.setText(nomComplet);
+                    if(snapshot.getKey().equals(userId)){
+                    String nomComplet = snapshot.child("nomComplet").getValue(String.class);
+                    nom.setText(nomComplet);}
 
                 }
 
